@@ -48,3 +48,28 @@ export const getUserDetails = async (req,res)=>{
         User,
     })
 }
+
+export const updateUser = async (req,res)=>{
+
+    const {id} = req.params;
+    const User = await user.findById(id)
+
+
+    res.json({
+        success: true,
+        message: "Updated"
+    })
+}
+
+export const deleteUser = async (req,res)=>{
+
+    const {id} = req.params;
+    const User = await user.findById(id)
+
+    await User.remove()
+
+    res.json({
+        success: true,
+        message: "Deleted"
+    })
+}
